@@ -9,6 +9,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 const inventoryRoutes = require('./routes/inventory')
+const userRoutes = require('./routes/user')
 
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -42,6 +43,8 @@ mongoose.connect(uri, {
 
 // Routes that should handle requests
 app.use('/inv', inventoryRoutes);
+app.use('/user', userRoutes);
+
 
 // Catch errors that go beyond the above routes
 app.use((req, res, next) => {

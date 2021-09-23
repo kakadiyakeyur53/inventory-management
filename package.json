@@ -7,6 +7,7 @@
     "start": "node server.js",
     "build": "cd client && npm run build",
     "client": "cd client && npm start",
+    "server":"nodemon server.js --ignore client",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build"
   },
@@ -27,6 +28,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.10.2",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.12",
     "redux": "^4.1.1"
   }
 }

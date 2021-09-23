@@ -82,7 +82,7 @@ export default function SignUp() {
     async function onSubmitHandler(e) {
         e.preventDefault();
 
-        if (fname === "" || lname === '' || pmail === '' || branch === '' || mobile === "" || password === "" || enrollment === "" || year==="" ) {
+        if (fname === "" || lname === '' || pmail === '' ||  mobile === "" || password === "" ) {
             setAlert(true);
             setAlertmsg("Fill required details.")
             return;
@@ -230,7 +230,7 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <FormControlLabel
                                 control={<Checkbox required checked={checked} onChange={() => setChecked(!checked)} color="primary" />}
-                                label="I'm hereby declare that all the above details are correct and certificates will be given according to that details."
+                                label="I'm hereby declare that all the above details are correct."
                             />
                         </Grid>
                     </Grid>
