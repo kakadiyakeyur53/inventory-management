@@ -104,7 +104,6 @@ export default class Information extends Component {
                 <footer style={{ marginTop: "70px" }}>
                 </footer>
             </div>
-
         )
     }
 }
