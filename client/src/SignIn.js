@@ -76,7 +76,7 @@ export default function Login() {
         }
 
         try {
-            var response = await fetch("http://localhost:4000/user/login", {
+            var response = await fetch("/user/login", {
                 method: "POST",
                 headers: {
                     'Accept': '*/*',

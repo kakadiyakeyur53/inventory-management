@@ -104,7 +104,7 @@ export default function SignUp() {
             "mail": pmail
         }
 
-            var response = await fetch("http://localhost:4000/user/signup", {
+            var response = await fetch("/user/signup", {
                 method: "POST",
                 headers: {
                     'Accept': '*/*',
