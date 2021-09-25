@@ -62,7 +62,7 @@ export default class UpdateList extends Component {
             this.onChangeQuantity(newQuantity, index)
             console.log(res.data.message)  
         });
-        
+    
     }
 
     // Function call for previous page button

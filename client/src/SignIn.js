@@ -68,19 +68,15 @@ export default function Login() {
             setAlert(true);
             setAlertmsg("Fill required details.")
             return;
-        } else if (isNaN(enrollment)) {
-            setAlert(true);
-            setAlertmsg("Enter valid Enrollment")
-            return;
         }
 
         let formData = {
-            "enrollment": enrollment,
+            "mail": enrollment,
             "password": password,
         }
 
         try {
-            var response = await fetch("https://updates2k21-node.herokuapp.com/login", {
+            var response = await fetch("http://localhost:4000/user/login", {
                 method: "POST",
                 headers: {
                     'Accept': '*/*',
@@ -91,9 +87,9 @@ export default function Login() {
 
             if (response.message === "USER_NOT_EXIST") {
                 setAlert(true);
-                setAlertmsg("Seems like you are new. please sign up and try again.")
+                setAlertmsg("Invalid mail id.")
             } else if (response.message === "LOGIN_SUCCESSFUL") {
-                sessionStorage.setItem("token",response.token)
+                sessionStorage.setItem("islogin",true)
                 setSuccess(true);
                 setAlertmsg("Congrats! you are logged in.")
                 setTimeout(() => {

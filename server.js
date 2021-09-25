@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') { 
     // Serve any static files
     app.use(express.static('client/build/'))
 

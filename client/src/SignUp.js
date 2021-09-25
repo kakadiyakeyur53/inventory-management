@@ -86,38 +86,25 @@ export default function SignUp() {
             setAlert(true);
             setAlertmsg("Fill required details.")
             return;
-        } else if (scetid.slice(-11) !== '@scet.ac.in' && scetid !== "") {
-            setAlert(true);
-            setAlertmsg("Enter Valid Scet email.")
-            return;
         } else if (mobile.length !== 10 || isNaN(mobile)) {
             setAlert(true);
             setAlertmsg("Enter Valid Mobile no.")
             return;
-        } else if (isNaN(enrollment)) {
-            setAlert(true);
-            setAlertmsg("Enter valid Enrollment")
-            return;
-        } else if (!checked) {
+        }else if (!checked) {
             setAlert(true);
             setAlertmsg("Check the checkbox before continue.")
             return;
         }
 
         let formData = {
-            "scetid": scetid,
-            "enrollment": enrollment,
             "password": password,
-            "firstname": fname,
-            "lastname": lname,
-            "year": year,
-            "dept": branch,
-            "shift": shift,
-            "phoneno": mobile,
-            "personalid": pmail
+            "fname": fname,
+            "lname": lname,
+            "number": mobile,
+            "mail": pmail
         }
 
-            var response = await fetch("https://updates2k21-node.herokuapp.com/signup", {
+            var response = await fetch("http://localhost:4000/user/signup", {
                 method: "POST",
                 headers: {
                     'Accept': '*/*',
@@ -129,6 +116,7 @@ export default function SignUp() {
                 setAlertmsg("Oops! Something went wrong. please try again later.");
             })
 
+            console.log(response);
             if(!response){
                 return
             }
@@ -140,11 +128,11 @@ export default function SignUp() {
                 setAlertmsg("Hurray! Sign up Successfull. You can now login.")
                 setTimeout(() => {
                     setSuccess(false)
-                history.push("/login");
+                history.push("/signin");
                 }, 2000);
             } else {
                 setAlert(true);
-                setAlertmsg("Please try again later. or Contact Co-ordinators");
+                setAlertmsg("Please try again later.");
             }
     
     }
@@ -230,7 +218,7 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <FormControlLabel
                                 control={<Checkbox required checked={checked} onChange={() => setChecked(!checked)} color="primary" />}
-                                label="I'm hereby declare that all the above details are correct."
+                                label="I hereby declare that all the above details are correct."
                             />
                         </Grid>
                     </Grid>

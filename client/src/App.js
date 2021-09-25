@@ -14,6 +14,10 @@ import SignIn from "./SignIn";
 import logo from "./Photoes/123.png"
 
 function App() {
+
+  let islogin = sessionStorage.getItem("islogin")==="true";
+
+
   return (
     <Router>
           <nav className="navbar navbar-expand-sm navbar-dark bg-dark" style={{marginBottom: "20px"}}>
@@ -41,18 +45,18 @@ function App() {
                 <Link to="/signup" className="nav-link">Sign up</Link>
               </li>
               <li className="navbar-item">
-                <Link to="/signin" className="nav-link">LogIn</Link>
+              { (!islogin)? <Link to="/signin" className="nav-link">LogIn</Link>:<Link onClick={()=>sessionStorage.setItem("islogin",false)} className="nav-link">Logout</Link>}
               </li>
             </ul>
           </div>
         </nav>
         <Route path="/" exact component={Information} />
-        <Route path="/list" exact component={List} />
-        <Route path="/update/" component={Update} />
-        <Route path="/create/" component={Create} />
-        <Route path="/remove/" component={Remove} />
+        <Route path="/signup"  component={SignUp} />
         <Route path="/signin" component={SignIn} />
-        <Route path="/signup" component={SignUp} />
+        <Route exact path="/list" render={()=>(islogin)?<List/>:<SignIn/>}   />
+        <Route path="/update/" render={()=>(islogin)?<Update/>:<SignIn/>}  />
+        <Route path="/create/" render={()=>(islogin)?<Create/>:<SignIn/>} />
+        <Route path="/remove/" render={()=>(islogin)?<Remove/>:<SignIn/>}  />
 
 
     </Router>
