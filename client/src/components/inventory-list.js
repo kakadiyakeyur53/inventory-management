@@ -19,6 +19,7 @@ export default class InventoryList extends Component {
 
         axios.get('/inv/')
             .then(response => {
+                console.log(response.data);
                 this.setState({ inventory: response.data });
             })
             .catch(function (error) {
@@ -42,19 +43,18 @@ export default class InventoryList extends Component {
         }
     }
 
-    // Mapping out GET data
     inventoryList() {
         // Slicing data for table pagination
         return this.state.inventory.slice(
-            (this.state.paginationCount * (this.state.currentPage - 1)),
-            (this.state.paginationCount * (this.state.currentPage))).map((inventory) => {
-                return (
-                    <tr key={inventory._id}>
-                        <td>{inventory.description}</td>
-                        <td>{inventory.quantity}</td>
-                    </tr>
-                );
-            })
+            (this.state.paginationCount * (this.state.currentPage - 1)), 
+            (this.state.paginationCount * (this.state.currentPage))).map((inventory) =>{
+            return(
+                <tr key={inventory._id}>
+                    <td>{inventory.description}</td>
+                    <td>{inventory.quantity}</td>
+                </tr> 
+            );
+        })
     }
 
     render() {

@@ -45,7 +45,7 @@ function App() {
                 <Link to="/signup" className="nav-link">Sign up</Link>
               </li>
               <li className="navbar-item">
-              { (!islogin)? <Link to="/signin" className="nav-link">LogIn</Link>:<Link onClick={()=>sessionStorage.setItem("islogin",false)} className="nav-link">Logout</Link>}
+              { (!islogin)? <Link to="/signin" className="nav-link">LogIn</Link>:<Link to="" onClick={()=>sessionStorage.setItem("islogin",false)} className="nav-link">Logout</Link>}
               </li>
             </ul>
           </div>
