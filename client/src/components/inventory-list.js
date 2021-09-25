@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router';
 
 export default class InventoryList extends Component {
     constructor(props) {
